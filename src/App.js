@@ -3,12 +3,15 @@ import axios from "axios";
 
 function App() {
   const [data, setData] = useState(null);
-  const handleBtnAxios = () => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos/1")
-      .then((response) => {
-        setData(response.data);
-      });
+  const handleBtnAxios = async () => {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos/1"
+      );
+      setData(response.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
