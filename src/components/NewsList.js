@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NewsItem from "./NewsItem";
 import axios from "axios";
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -11,8 +11,9 @@ const NewsList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        const query = category === "all" ? "" : `&category=${category}`;
         const response = axios.get(
-          "https://newsapi.org/v2/top-headlines?country=kr&apiKey=6f1993113ca34824ab68673e9bdca9ee"
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=6f1993113ca34824ab68673e9bdca9ee`
         );
         setArticles((await response).data.articles);
       } catch (e) {
@@ -21,7 +22,7 @@ const NewsList = () => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [category]);
 
   if (loading) {
     return <NewsListBlock>대기중...</NewsListBlock>;
