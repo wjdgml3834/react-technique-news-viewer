@@ -6,9 +6,10 @@ function App() {
   const handleBtnAxios = async () => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/todos/1"
+        "https://newsapi.org/v2/top-headlines?country=kr&apiKey=6f1993113ca34824ab68673e9bdca9ee"
       );
-      setData(response.data);
+      console.log(response);
+      setData(response.data.articles);
     } catch (e) {
       console.log(e);
     }
@@ -21,7 +22,8 @@ function App() {
       </div>
       {data && (
         <textarea
-          rows={7}
+          cols={100}
+          rows={100}
           value={JSON.stringify(data, null, 2)}
           readOnly={true}
         />
