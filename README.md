@@ -1,6 +1,6 @@
 # 🌐 프로젝트 링크
 
-https://react-technique-news-viewer.vercel.app/
+https://wjdgml3834.github.io/react-technique-news-viewer/
 
 # 🌲 프로젝트 구조
 ```bash
